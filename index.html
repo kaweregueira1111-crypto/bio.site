@@ -1377,6 +1377,39 @@ still?frame(0):requestAnimationFrame(frame);
   }
 </style>
 
+      </div>
+  </div>
+
+  <script>
+  (function(){
+    const dock = document.getElementById('dockFixed');
+    if(!dock) return;
+    
+    document.body.appendChild(dock);
+
+    function checarTela(){
+      const alvo = document.getElementById('gamesGrid') || document.getElementById('p9Grid') || document.querySelector('.card-plat');
+      if(alvo){
+        const rect = alvo.getBoundingClientRect();
+        const visivel = alvo.offsetParent !== null && rect.height > 0;
+        if(visivel){
+          dock.classList.add('is-visible');
+        } else {
+          dock.classList.remove('is-visible');
+        }
+      } else {
+        dock.classList.add('is-visible');
+      }
+    }
+
+    setInterval(checarTela, 250);
+    checarTela();
+  })();
+  </script>
+
+</body>
+</html>
+
 
 
 </body>
